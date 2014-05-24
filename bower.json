@@ -11,7 +11,8 @@
     "angular-sanitize": "1.2.15",
     "angular-route": "1.2.15",
     "physicsjs": "*",
-    "TweenJS": "*"
+    "TweenJS": "*",
+    "pixijs": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
