@@ -22,7 +22,7 @@ angular.module('physicsJsgameApp')
           element.css('border', '1px solid #000');
           element.css('position', 'relative');
 
-          var renderer = Physics.renderer('pixi', {
+          var renderer = Physics.renderer('canvas', {
             el: 'game-arena',
             width: viewWidth,
             height: viewHeight,
@@ -62,7 +62,7 @@ angular.module('physicsJsgameApp')
           // constrain objects to these bounds
           world.add(Physics.behavior('edge-collision-detection', {
             aabb: viewportBounds,
-            restitution: 1,
+            restitution: 0,
             cof: 0.99
           }));
 
@@ -75,36 +75,31 @@ angular.module('physicsJsgameApp')
               y: bodyCentreY, // y-coordinate
               vx: 0.0, // velocity in x-direction
               vy: 0.0, // velocity in y-direction
-              radius: 20
+              radius: 15
             });
 
           var headHam = Physics.body('circle', {
-              x: bodyCentreX, // x-coordinate
-              y: bodyCentreY-35, // y-coordinate
+              x: bodyCentreX+10, // x-coordinate
+              y: bodyCentreY-29, // y-coordinate
               vx: 0.0, // velocity in x-direction
               vy: 0.0, // velocity in y-direction
               radius: 15
             });
-          headHam.view = renderer.createDisplay('sprite', {
-            texture: 'hamster-head-30.png',
-            anchor: {
-              x: 0.5,
-              y: 0.5
-            }
-          });
+          headHam.view = new Image();
+          headHam.view.src = 'images/hamster-head-30.png';
           console.log(headHam.view);
 
           var baseFoot = Physics.body('rectangle', {
               x: bodyCentreX+15, // x-coordinate
-              y: bodyCentreY+23, // y-coordinate
-              width: 15,
+              y: bodyCentreY+20, // y-coordinate
+              width: 10,
               height: 7
             });
 
           var pushFoot = Physics.body('rectangle', {
-              x: bodyCentreX-15, // x-coordinate
-              y: bodyCentreY+23, // y-coordinate
-              width: 15,
+              x: bodyCentreX-10, // x-coordinate
+              y: bodyCentreY+20, // y-coordinate
+              width: 10,
               height: 7
             });
 
@@ -113,10 +108,10 @@ angular.module('physicsJsgameApp')
           });
 
           rigidConstraints.distanceConstraint(headHam, bodyHam, 0.2);
-          // rigidConstraints.distanceConstraint(baseFoot, bodyHam, 0.2);
-          // rigidConstraints.distanceConstraint(pushFoot, bodyHam, 0.2);
-          // rigidConstraints.distanceConstraint(pushFoot, headHam, 0.2);
-          // rigidConstraints.distanceConstraint(baseFoot, headHam, 0.2);
+          rigidConstraints.distanceConstraint(baseFoot, bodyHam, 0.2);
+          rigidConstraints.distanceConstraint(pushFoot, bodyHam, 0.2);
+          rigidConstraints.distanceConstraint(pushFoot, headHam, 0.2);
+          rigidConstraints.distanceConstraint(baseFoot, headHam, 0.2);
 
 
           // world.on('render', function( data ){
@@ -132,8 +127,8 @@ angular.module('physicsJsgameApp')
 
           world.add(bodyHam);
           world.add(headHam);
-          // world.add(baseFoot);
-          // world.add(pushFoot);
+          world.add(baseFoot);
+          world.add(pushFoot);
           world.add(rigidConstraints);
 
 
