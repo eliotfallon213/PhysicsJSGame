@@ -29,15 +29,15 @@ angular.module('physicsJsgameApp')
             meta: false, // don't display meta data
             styles: {
               // Defines the default canvas colour
-              'color': '0xFFFF00',
+              'color': '0xffaa56',
     
-              'point' : '0xE8900C',
+              'point' : '0xffaa56',
     
               'circle' : {
-                strokeStyle: '0xE8900C',
+                strokeStyle: '0xFFAA56',
                 lineWidth: 3,
-                fillStyle: '0xD5DE4C',
-                angleIndicator: '0xE8900C'
+                fillStyle: '0xFFAA56',
+                angleIndicator: '0xFFAA56'
               },
     
               'convex-polygon' : {
