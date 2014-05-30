@@ -34,10 +34,10 @@ angular.module('physicsJsgameApp')
               'point' : '0xffaa56',
     
               'circle' : {
-                strokeStyle: '0xFFAA56',
-                lineWidth: 3,
-                fillStyle: '0xFFAA56',
-                angleIndicator: '0xFFAA56'
+                strokeStyle: '#000000',
+                lineWidth: 2,
+                fillStyle: '#FFAA56',
+                angleIndicator: '#FFAA56'
               },
     
               'convex-polygon' : {
@@ -77,6 +77,8 @@ angular.module('physicsJsgameApp')
               vy: 0.0, // velocity in y-direction
               radius: 15
             });
+          bodyHam.view = new Image();
+          bodyHam.view.src = 'images/hamster-body.png';
 
           var headHam = Physics.body('circle', {
               x: bodyCentreX+10, // x-coordinate
@@ -86,7 +88,7 @@ angular.module('physicsJsgameApp')
               radius: 15
             });
           headHam.view = new Image();
-          headHam.view.src = 'images/hamster-head-30.png';
+          headHam.view.src = 'images/hamster-head-small.png';
           console.log(headHam.view);
 
           var baseFoot = Physics.body('rectangle', {
