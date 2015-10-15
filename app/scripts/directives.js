@@ -11,7 +11,7 @@ angular.module('physicsJsgameApp')
         console.log(scope);
         console.log(element);
         console.log(attr);
-        
+
         var physics = new Physics(function(world) {
 
           var viewWidth = 1000;
@@ -20,7 +20,7 @@ angular.module('physicsJsgameApp')
 
           element.css('height', viewHeight+'px');
           element.css('width', viewPortWidth+'px');
-          element.css('overflow-x', 'scroll');
+          element.css('overflow-x', 'hidden');
           element.css('overflow-y', 'hidden');
           element.css('border', '1px solid #000');
           element.css('position', 'relative');
@@ -33,16 +33,16 @@ angular.module('physicsJsgameApp')
             styles: {
               // Defines the default canvas colour
               'color': '0xffaa56',
-    
+
               'point' : '0xffaa56',
-    
+
               'circle' : {
                 strokeStyle: '#000000',
                 lineWidth: 2,
                 fillStyle: '#FFAA56',
                 angleIndicator: '#FFAA56'
               },
-    
+
               'convex-polygon' : {
                 strokeStyle: '0xE8900C',
                 lineWidth: 3,
@@ -128,7 +128,7 @@ angular.module('physicsJsgameApp')
           var backWheel = Physics.body('circle', {
               x: bodyCentreX-20, // x-coordinate
               y: bodyCentreY+33, // y-coordinate
-              vx: 0.0, // velocity in x-direction
+              vx: 0.5, // velocity in x-direction
               vy: 0.0, // velocity in y-direction
               radius: 5
             });
@@ -136,7 +136,7 @@ angular.module('physicsJsgameApp')
           var frontWheel = Physics.body('circle', {
               x: bodyCentreX+20, // x-coordinate
               y: bodyCentreY+33, // y-coordinate
-              vx: 0.0, // velocity in x-direction
+              vx: 0.5, // velocity in x-direction
               vy: 0.0, // velocity in y-direction
               radius: 5
             });
